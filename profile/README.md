@@ -17,12 +17,12 @@
   <p align="center">
     Open-source <strong>data space</strong> software: connectors through which organizations share data and APIs under contracts, with every exchange controlled and auditable.
     <br />
-    <a href="https://github.com/sovra-dataspace/plataforma"><strong>Read the roadmap »</strong></a>
+    <a href="https://github.com/sovra-dataspace/platform"><strong>Read the roadmap »</strong></a>
     <br />
     <br />
     <a href="https://github.com/sovra-dataspace/dataspace-core">Connector</a>
     &middot;
-    <a href="https://github.com/sovra-dataspace/plataforma/blob/main/docs/architecture.md">Architecture</a>
+    <a href="https://github.com/sovra-dataspace/platform/blob/main/docs/architecture.md">Architecture</a>
     &middot;
     <a href="https://github.com/sovra-dataspace/dataspace-core/issues">Report Bug</a>
   </p>
@@ -71,7 +71,7 @@ A **data space** is an environment where organizations share data and APIs under
 | Repository | Purpose |
 |---|---|
 | [`dataspace-core`](https://github.com/sovra-dataspace/dataspace-core) | The data space connector in Rust: core + modules (DSP, DCP, OpenID4VC) |
-| [`plataforma`](https://github.com/sovra-dataspace/plataforma) | Roadmap, overall architecture, decisions and conventions |
+| [`platform`](https://github.com/sovra-dataspace/platform) | Roadmap, overall architecture, decisions and conventions |
 | [`.github`](https://github.com/sovra-dataspace/.github) | This profile and the VS Code workspace for all repositories |
 | `consola-web` *(planned)* | Connector administration and people's access portal |
 | `despliegue` *(planned)* | Multi-participant pilot environment |
@@ -85,7 +85,7 @@ All you need is **Docker** and **VS Code** with the *Dev Containers* extension.
 1. Clone the repositories side by side:
    ```sh
    git clone https://github.com/sovra-dataspace/.github
-   git clone https://github.com/sovra-dataspace/plataforma
+   git clone https://github.com/sovra-dataspace/platform
    git clone https://github.com/sovra-dataspace/dataspace-core
    ```
 2. Open `.github/sovra.code-workspace` in VS Code to see them all.
@@ -95,7 +95,7 @@ All you need is **Docker** and **VS Code** with the *Dev Containers* extension.
 
 ## Contributing
 
-Read the [conventions](https://github.com/sovra-dataspace/plataforma/blob/main/docs/conventions.md) first. Code comments are always in English, and every document is written in English and Spanish.
+Read the [conventions](https://github.com/sovra-dataspace/platform/blob/main/docs/conventions.md) first. Code comments are always in English, and every document is written in English and Spanish.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

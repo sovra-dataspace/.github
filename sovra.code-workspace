@@ -1,10 +1,10 @@
 {
   // Every Sovra repository at once. Clone the repositories side by side
-  // (plataforma, dataspace-core, .github…) and open this file. To work on one
+  // (platform, dataspace-core, .github…) and open this file. To work on one
   // with its toolchain, open its folder and use "Dev Containers: Reopen in Container".
   "folders": [
     { "name": ".github (organization profile)", "path": "." },
-    { "name": "plataforma", "path": "../plataforma" },
+    { "name": "platform", "path": "../platform" },
     { "name": "dataspace-core", "path": "../dataspace-core" }
   ],
   "settings": {
