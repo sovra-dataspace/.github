@@ -1,0 +1,19 @@
+{
+  // Every Sovra repository at once. Clone the repositories side by side
+  // (plataforma, dataspace-core, .github…) and open this file. To work on one
+  // with its toolchain, open its folder and use "Dev Containers: Reopen in Container".
+  "folders": [
+    { "name": ".github (organization profile)", "path": "." },
+    { "name": "plataforma", "path": "../plataforma" },
+    { "name": "dataspace-core", "path": "../dataspace-core" }
+  ],
+  "settings": {
+    "files.eol": "\n"
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode-remote.remote-containers",
+      "ms-azuretools.vscode-docker"
+    ]
+  }
+}
