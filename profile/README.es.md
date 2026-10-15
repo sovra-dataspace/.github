@@ -68,6 +68,8 @@ Un **espacio de datos** es un entorno en el que organizaciones comparten datos y
 
 ## Repositorios
 
+> 🔒 Los repositorios son **privados durante las primeras fases de desarrollo** y se abrirán cuando se consoliden los primeros hitos. Por ahora, los enlaces de abajo solo funcionan para los miembros de la organización.
+
 | Repo | Para qué |
 |---|---|
 | [`dataspace-core`](https://github.com/sovra-dataspace/dataspace-core/blob/main/README.es.md) | El conector de espacios de datos en Rust: núcleo + módulos (DSP, DCP, OpenID4VC) |

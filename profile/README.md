@@ -68,6 +68,8 @@ A **data space** is an environment where organizations share data and APIs under
 
 ## Repositories
 
+> 🔒 The repositories are **private during early development** and will be opened once the first milestones are consolidated. The links below only work for organization members for now.
+
 | Repository | Purpose |
 |---|---|
 | [`dataspace-core`](https://github.com/sovra-dataspace/dataspace-core) | The data space connector in Rust: core + modules (DSP, DCP, OpenID4VC) |
