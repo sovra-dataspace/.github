@@ -8,6 +8,7 @@
 **English** · [Español](README.es.md)
 
 [![DSP TCK][tck-shield]][tck-url]
+[![DCP TCK][dcp-tck-shield]][dcp-tck-url]
 [![License][license-shield]][license-url]
 
 <br />
@@ -49,14 +50,19 @@ The name comes from **sovereignty**: *data sovereignty*, the core idea of data s
 | Standard | What it solves | Status |
 |---|---|---|
 | **Eclipse Dataspace Protocol (DSP)** | How connectors publish catalogs, negotiate contracts and transfer data | ✅ Official TCK 65/65 |
-| **Decentralized Claims Protocol (DCP)** | How connectors prove who they are with verifiable credentials | ⬜ In progress |
+| **Decentralized Claims Protocol (DCP)** | How connectors prove who they are with verifiable credentials | ✅ Official TCK 117/117 |
 | **OpenID4VCI / OpenID4VP** | How credentials are issued and presented | ⬜ Planned |
 
 What we add around the standards, without changing them:
 
 - **One binary + SQLite**: a connector that any organization can deploy.
 - **Mandatory, auditable connector**: every transaction goes through a connector that records it.
-- **Simple access for people**: official certificate or username and password. An existing identity wallet is an option, never a requirement.
+- **Simple access for people**: username and password. Official certificates and existing identity wallets through an optional module, never a requirement.
+- **Web console in the connector itself**: first-start wizard, users with roles and an optional second factor, network topology and audit trail ([console](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/console.md)).
+- **Zero-trust network**: mutual TLS between connectors, a signed directory and a relay for connectors behind NAT, with no public IP needed ([zero-trust network](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/zero-trust-network.md)).
+- **Several data spaces per connector**: member of several spaces, or authority of some, with a separate identity, credentials, catalog, agreements and audit trail in each ([spaces](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/spaces.md)).
+- **No single point of failure**: members the authority accredits replicate what it publishes, all signed by it, so the space keeps working while the authority is down ([replicas](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/replicas.md)).
+- **Lightweight and extensible**: the minimum connector ships only what secure data exchange needs; everything else is a signed module installed from the dashboard.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -75,7 +81,7 @@ A **data space** is an environment where organizations share data and APIs under
 | [`dataspace-core`](https://github.com/sovra-dataspace/dataspace-core) | The data space connector in Rust: core + modules (DSP, DCP, OpenID4VC) |
 | [`platform`](https://github.com/sovra-dataspace/platform) | Roadmap, overall architecture, decisions and conventions |
 | [`.github`](https://github.com/sovra-dataspace/.github) | This profile and the VS Code workspace for all repositories |
-| `consola-web` *(planned)* | Connector administration and people's access portal |
+| ~~`consola-web`~~ *(dropped)* | The web console is served by the connector itself, in `dataspace-core` |
 | `despliegue` *(planned)* | Multi-participant pilot environment |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -109,5 +115,7 @@ Every repository is distributed under the Apache License 2.0.
 
 [tck-shield]: https://img.shields.io/badge/DSP_TCK-65%2F65-brightgreen?style=for-the-badge
 [tck-url]: https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/tck.md
+[dcp-tck-shield]: https://img.shields.io/badge/DCP_TCK-117%2F117-brightgreen?style=for-the-badge
+[dcp-tck-url]: https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/dcp.md#conformance-the-official-dcp-tck
 [license-shield]: https://img.shields.io/badge/license-Apache--2.0-blue?style=for-the-badge
 [license-url]: https://github.com/sovra-dataspace/dataspace-core/blob/main/LICENSE
