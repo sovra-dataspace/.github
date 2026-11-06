@@ -23,6 +23,8 @@
     <br />
     <a href="https://github.com/sovra-dataspace/dataspace-core">Connector</a>
     &middot;
+    <a href="https://github.com/sovra-dataspace/desktop">Desktop</a>
+    &middot;
     <a href="https://github.com/sovra-dataspace/platform/blob/main/docs/architecture.md">Architecture</a>
     &middot;
     <a href="https://github.com/sovra-dataspace/dataspace-core/issues">Report Bug</a>
@@ -43,7 +45,7 @@
 
 ## About Sovra
 
-**Sovra builds data space infrastructure.** Its core is `dataspace-core`, a connector written in Rust that every participant runs to take part in a data space.
+**Sovra builds data space infrastructure.** Its core is `dataspace-core`, a connector written in Rust that every participant runs to take part in a data space: on a server (a signed Docker image and a Helm chart, for any platform) or, for a person or a small organization, in the **Sovra desktop application** for Windows and Linux.
 
 The name comes from **sovereignty**: *data sovereignty*, the core idea of data spaces. Each organization keeps control over its data: who may use it, for what and under which conditions. Sovra makes that sovereignty real with the three open standards of data spaces, which we implement strictly and verify with their official test suites (TCK, *Technology Compatibility Kit*):
 
@@ -51,7 +53,7 @@ The name comes from **sovereignty**: *data sovereignty*, the core idea of data s
 |---|---|---|
 | **Eclipse Dataspace Protocol (DSP)** | How connectors publish catalogs, negotiate contracts and transfer data | ✅ Official TCK 65/65 |
 | **Decentralized Claims Protocol (DCP)** | How connectors prove who they are with verifiable credentials | ✅ Official TCK 117/117 |
-| **OpenID4VCI / OpenID4VP** | How credentials are issued and presented | ⬜ Planned |
+| **OpenID4VCI / OpenID4VP** | How credentials are issued and presented | ✅ OpenID Foundation conformance suite: verifier 14/14, issuer 20/20 |
 
 What we add around the standards, without changing them:
 
@@ -61,7 +63,11 @@ What we add around the standards, without changing them:
 - **Web console in the connector itself**: first-start wizard, users with roles and an optional second factor, network topology and audit trail ([console](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/console.md)).
 - **Zero-trust network**: mutual TLS between connectors, a signed directory and a relay for connectors behind NAT, with no public IP needed ([zero-trust network](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/zero-trust-network.md)).
 - **Several data spaces per connector**: member of several spaces, or authority of some, with a separate identity, credentials, catalog, agreements and audit trail in each ([spaces](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/spaces.md)).
-- **No single point of failure**: members the authority accredits replicate what it publishes, all signed by it, so the space keeps working while the authority is down ([replicas](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/replicas.md)).
+- **No single point of failure**: the authority can be shared among several authority nodes, each with every function (relay included) and its own keys; decisions such as admitting or revoking a connector are approved by a majority of them, like a pull request, and the space keeps working while one is down ([decentralized authority](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/decentralized-authority.md)).
+- **The owner decides, after talking**: each request for your data waits for you to accept or reject it; meanwhile both parties write, propose conditions of use, send documents and sign them in a **negotiation room**, signed with each connector's key, recorded in the audit trail of both and linked to the agreement ([negotiation room](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/negotiation-room.md)).
+- **One catalog for the whole space**: everything every member publishes, with its owner, built by each connector without a central index.
+- **Deploy anywhere**: every version is published as a signed image (`ghcr.io/sovra-dataspace/sovra`) and a Helm chart; ready files for any server with Docker or any Kubernetes, and a guide to put an authority on the internet ([public authority](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/public-authority.md), [releases](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/releases.md)).
+- **One connector, every platform**: the desktop application runs the same connector, as a member of data spaces (never their authority, which is a server), with nothing to open on the router.
 - **Lightweight and extensible**: the minimum connector ships only what secure data exchange needs; everything else is a signed module installed from the dashboard.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -79,6 +85,7 @@ A **data space** is an environment where organizations share data and APIs under
 | Repository | Purpose |
 |---|---|
 | [`dataspace-core`](https://github.com/sovra-dataspace/dataspace-core) | The data space connector in Rust: core + modules (DSP, DCP, OpenID4VC) |
+| [`desktop`](https://github.com/sovra-dataspace/desktop) | The desktop application (Windows, Linux): the same connector, as a member |
 | [`platform`](https://github.com/sovra-dataspace/platform) | Roadmap, overall architecture, decisions and conventions |
 | [`.github`](https://github.com/sovra-dataspace/.github) | This profile and the VS Code workspace for all repositories |
 | ~~`consola-web`~~ *(dropped)* | The web console is served by the connector itself, in `dataspace-core` |
@@ -88,13 +95,16 @@ A **data space** is an environment where organizations share data and APIs under
 
 ## Getting Started
 
-All you need is **Docker** and **VS Code** with the *Dev Containers* extension.
+**To use Sovra**: install the desktop application from the [releases of `desktop`](https://github.com/sovra-dataspace/desktop/releases), or run a connector on a server with the image or the chart of a [release of `dataspace-core`](https://github.com/sovra-dataspace/dataspace-core/releases) ([guide](https://github.com/sovra-dataspace/dataspace-core/blob/main/docs/public-authority.md)).
+
+**To develop** you need **Docker** and **VS Code** with the *Dev Containers* extension.
 
 1. Clone the repositories side by side:
    ```sh
    git clone https://github.com/sovra-dataspace/.github
    git clone https://github.com/sovra-dataspace/platform
    git clone https://github.com/sovra-dataspace/dataspace-core
+   git clone https://github.com/sovra-dataspace/desktop
    ```
 2. Open `.github/sovra.code-workspace` in VS Code to see them all.
 3. Start the connector following the [`dataspace-core` README](https://github.com/sovra-dataspace/dataspace-core#getting-started).

@@ -7,6 +7,6 @@ Organization-level repository of **Sovra · Data Spaces** (`github.com/sovra-dat
 | File | Purpose |
 |---|---|
 | [`profile/README.md`](profile/README.md) | Organization profile shown at github.com/sovra-dataspace ([Spanish](profile/README.es.md)) |
-| [`sovra.code-workspace`](sovra.code-workspace) | VS Code workspace with every repository (clone them side by side) |
+| [`sovra.code-workspace`](sovra.code-workspace) | VS Code workspace with every repository: `platform`, `dataspace-core`, `desktop` (clone them side by side) |
 
 Licensed under the Apache License 2.0 ([`LICENSE`](LICENSE)).
